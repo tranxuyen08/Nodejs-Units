@@ -1,0 +1,32 @@
+{
+    "all": true,
+    "check-coverage": true,
+    "exclude": [
+        "**/config/**",
+        "**/tests/**",
+        "**/node_modules/**",
+        "**/coverage/**",
+        "**/models/**",
+        "**/routes/**",
+        "**/controllers/**",
+        "**/middlewares/**",
+        "**/reports/**",
+        "**/app.js",
+        "**/newman.js",
+        "**/knexfile.js"
+    ],
+    "temp-dir": "./reports/.nyc_output",
+    "report-dir": "./reports/coverage",
+    "reporter": [
+        "text",
+        "html"
+    ],
+    "extension": [
+        ".js",
+        ".cjs",
+        ".mjs",
+        ".ts",
+        ".tsx",
+        ".jsx"
+    ]
+}

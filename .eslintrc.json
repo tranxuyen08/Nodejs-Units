@@ -1,0 +1,63 @@
+{
+    "extends": [
+        "airbnb",
+        "prettier"
+    ],
+    "plugins": [
+        "prettier"
+    ],
+    "env": {
+        "mocha": true
+    },
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto",
+                "singleQuote": false
+            }
+        ],
+        "prefer-const": [
+            "error",
+            {
+                "destructuring": "all",
+                "ignoreReadBeforeAssign": false
+            }
+        ],
+        "spaced-comment": "off",
+        "no-console": "error",
+        "arrow-body-style": [
+            "error",
+            "always"
+        ],
+        "func-names": "off",
+        "linebreak-style": 0,
+        "global-require": "off",
+        "object-shorthand": "off",
+        "no-await-in-loop": "off",
+        "no-plusplus": "off",
+        "camelcase": "off",
+        "no-process-exit": "off",
+        "consistent-return": "off",
+        "no-lonely-if": "off",
+        "no-useless-catch": "off",
+        "no-unneeded-ternary": "off",
+        "no-param-reassign": "off",
+        "no-return-await": "off",
+        "no-underscore-dangle": "off",
+        "class-methods-use-this": "off",
+        "prefer-destructuring": [
+            "error",
+            {
+                "object": true,
+                "array": false
+            }
+        ],
+        "no-unused-vars": [
+            "error",
+            {
+                "argsIgnorePattern": "req|res|next|val"
+            }
+        ]
+    }
+}

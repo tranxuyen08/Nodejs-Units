@@ -1,0 +1,18 @@
+{
+    "threshold": 10,
+    "reporters": ["html", "console", "badge"],
+    "ignore": [
+        "**/node_modules/**",
+        "**/.nyc_output/**",
+        "**/coverage/**",
+        "**/models/**",
+        "**/tests/**",
+        "**/collection_test/**",
+        "**/reports/**",
+        "**/middlewares/**",
+        "**/swagger.yaml/**",
+        "**/routes/**"
+    ],
+    "absolute": true,
+    "output": "./reports/duplicate/"
+}

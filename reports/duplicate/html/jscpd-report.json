@@ -1,0 +1,653 @@
+{
+  "statistics": {
+    "detectionDate": "2021-12-13T03:10:27.563Z",
+    "formats": {
+      "javascript": {
+        "sources": {
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/config/seeds/change_8_add_default_employees.js": {
+            "lines": 11,
+            "tokens": 109,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/config/seeds/change_7_creditLimit_positive.js": {
+            "lines": 4,
+            "tokens": 47,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/config/seeds/change_6_role.js": {
+            "lines": 4,
+            "tokens": 47,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/config/seeds/change_5_role.js": {
+            "lines": 4,
+            "tokens": 47,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/config/seeds/change_4_role.js": {
+            "lines": 4,
+            "tokens": 47,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/config/seeds/change_3_role.js": {
+            "lines": 4,
+            "tokens": 47,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/config/seeds/change_2_role.js": {
+            "lines": 4,
+            "tokens": 47,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/config/seeds/change_1_role.js": {
+            "lines": 4,
+            "tokens": 47,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/config/migrations/20211201043243_add_user_customer.js": {
+            "lines": 14,
+            "tokens": 135,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/config/migrations/20211128123653_add_email_unique.js": {
+            "lines": 10,
+            "tokens": 101,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/config/migrations/20211112080824_user.js": {
+            "lines": 10,
+            "tokens": 131,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/utils/common.js": {
+            "lines": 334,
+            "tokens": 3101,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/utils/account.js": {
+            "lines": 50,
+            "tokens": 525,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/services/user_customer.service.js": {
+            "lines": 15,
+            "tokens": 122,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/services/user.service.js": {
+            "lines": 15,
+            "tokens": 122,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/services/report.service.js": {
+            "lines": 107,
+            "tokens": 959,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 20,
+            "duplicatedTokens": 196,
+            "percentage": 18.69,
+            "percentageTokens": 20.44,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/services/productLine.service.js": {
+            "lines": 66,
+            "tokens": 560,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/services/product.service.js": {
+            "lines": 69,
+            "tokens": 603,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/services/order.service.js": {
+            "lines": 174,
+            "tokens": 1942,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/services/office.service.js": {
+            "lines": 61,
+            "tokens": 555,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/services/logger.service.js": {
+            "lines": 88,
+            "tokens": 765,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/services/employees.service.js": {
+            "lines": 227,
+            "tokens": 1911,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/services/customers.service.js": {
+            "lines": 113,
+            "tokens": 1038,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/controllers/user_customer.controller.js": {
+            "lines": 33,
+            "tokens": 307,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 21,
+            "duplicatedTokens": 181,
+            "percentage": 63.64,
+            "percentageTokens": 58.96,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/controllers/user.controller.js": {
+            "lines": 35,
+            "tokens": 309,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 21,
+            "duplicatedTokens": 181,
+            "percentage": 60,
+            "percentageTokens": 58.58,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/controllers/report.controller.js": {
+            "lines": 46,
+            "tokens": 402,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/controllers/productLine.controller.js": {
+            "lines": 50,
+            "tokens": 535,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/controllers/product.controller.js": {
+            "lines": 50,
+            "tokens": 538,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/controllers/order.controller.js": {
+            "lines": 67,
+            "tokens": 669,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/controllers/office.controller.js": {
+            "lines": 50,
+            "tokens": 538,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/controllers/logger.controller.js": {
+            "lines": 9,
+            "tokens": 104,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/controllers/employee.controller.js": {
+            "lines": 102,
+            "tokens": 1065,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/controllers/customer.controller.js": {
+            "lines": 88,
+            "tokens": 876,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/newman.js": {
+            "lines": 20,
+            "tokens": 123,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/knexfile.js": {
+            "lines": 21,
+            "tokens": 146,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/app.js": {
+            "lines": 72,
+            "tokens": 686,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 2035,
+          "tokens": 19306,
+          "sources": 36,
+          "clones": 3,
+          "duplicatedLines": 31,
+          "duplicatedTokens": 279,
+          "percentage": 1.52,
+          "percentageTokens": 1.45,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "json": {
+        "sources": {
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/collection_postman/Manage User System.postman_environment.json": {
+            "lines": 18,
+            "tokens": 99,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/.vscode/launch.json": {
+            "lines": 14,
+            "tokens": 110,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/package.json": {
+            "lines": 57,
+            "tokens": 378,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/.jscpd.json": {
+            "lines": 17,
+            "tokens": 86,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "/home/hoamx1/Desktop/nodejs-knex-objection-full/.eslintrc.json": {
+            "lines": 62,
+            "tokens": 324,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 168,
+          "tokens": 997,
+          "sources": 5,
+          "clones": 0,
+          "duplicatedLines": 0,
+          "duplicatedTokens": 0,
+          "percentage": 0,
+          "percentageTokens": 0,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      }
+    },
+    "total": {
+      "lines": 2203,
+      "tokens": 20303,
+      "sources": 41,
+      "clones": 3,
+      "duplicatedLines": 31,
+      "duplicatedTokens": 279,
+      "percentage": 1.41,
+      "percentageTokens": 1.37,
+      "newDuplicatedLines": 0,
+      "newClones": 0
+    }
+  },
+  "duplicates": [
+    {
+      "format": "javascript",
+      "lines": 11,
+      "fragment": "if (start_date >= end_date) {\n        throw new AppError(\"start_date must be less than end_date\");\n    }\n    if (!start_date) {\n        const minOrderDate = await Order.query().min(\"orderDate as minOrder\");\n        start_date = minOrderDate[0].minOrder;\n    }\n    const rawData = await Office.query()\n        .select(\n            raw(\n                \"sum(orderdetails.quantityOrdered * orderdetails.priceEach) as revenue, productlines.productLine\"",
+      "tokens": 0,
+      "firstFile": {
+        "name": "/home/hoamx1/Desktop/nodejs-knex-objection-full/services/report.service.js",
+        "start": 44,
+        "end": 54,
+        "startLoc": {
+          "line": 44,
+          "column": 5,
+          "position": 388
+        },
+        "endLoc": {
+          "line": 54,
+          "column": 98,
+          "position": 486
+        }
+      },
+      "secondFile": {
+        "name": "/home/hoamx1/Desktop/nodejs-knex-objection-full/services/report.service.js",
+        "start": 13,
+        "end": 23,
+        "startLoc": {
+          "line": 13,
+          "column": 5,
+          "position": 129
+        },
+        "endLoc": {
+          "line": 23,
+          "column": 92,
+          "position": 227
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 8,
+      "fragment": "= handleError(async (req, res) => {\n    const credentials = req.body || {};\n\n    if (!credentials.username || !credentials.password) {\n        return res.status(400).send({ error: \"Invalid credentials.\" });\n    }\n\n    const result = await loginEmployee",
+      "tokens": 0,
+      "firstFile": {
+        "name": "/home/hoamx1/Desktop/nodejs-knex-objection-full/controllers/user.controller.js",
+        "start": 15,
+        "end": 22,
+        "startLoc": {
+          "line": 15,
+          "column": 2,
+          "position": 127
+        },
+        "endLoc": {
+          "line": 22,
+          "column": 14,
+          "position": 217
+        }
+      },
+      "secondFile": {
+        "name": "/home/hoamx1/Desktop/nodejs-knex-objection-full/controllers/user_customer.controller.js",
+        "start": 15,
+        "end": 21,
+        "startLoc": {
+          "line": 15,
+          "column": 2,
+          "position": 127
+        },
+        "endLoc": {
+          "line": 21,
+          "column": 18,
+          "position": 216
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 15,
+      "fragment": "(credentials);\n\n    if (result.error) {\n        return res.status(404).send({\n            success: false,\n            message: \"Invalid username or password.\",\n        });\n    }\n\n    return res.send({\n        success: true,\n        message: \"Login successfully\",\n        data: result,\n    });\n});",
+      "tokens": 0,
+      "firstFile": {
+        "name": "/home/hoamx1/Desktop/nodejs-knex-objection-full/controllers/user.controller.js",
+        "start": 22,
+        "end": 36,
+        "startLoc": {
+          "line": 22,
+          "column": 14,
+          "position": 218
+        },
+        "endLoc": {
+          "line": 36,
+          "column": 2,
+          "position": 309
+        }
+      },
+      "secondFile": {
+        "name": "/home/hoamx1/Desktop/nodejs-knex-objection-full/controllers/user_customer.controller.js",
+        "start": 21,
+        "end": 34,
+        "startLoc": {
+          "line": 21,
+          "column": 18,
+          "position": 217
+        },
+        "endLoc": {
+          "line": 34,
+          "column": 2,
+          "position": 307
+        }
+      }
+    }
+  ]
+}

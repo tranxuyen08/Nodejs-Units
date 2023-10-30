@@ -1,0 +1,3568 @@
+openapi: 3.0.0
+info:
+    title: Management User System
+    description: This is a RESTful API of Management User System. When you login to system, you got a token. And insert token to Authorize button.
+    termsOfService: "https://gitlab.com/maixuanhoa1995/mock-project.git"
+
+    version: 3.0.0
+servers:
+    - url: http://localhost:3000
+      description: Development server
+tags:
+    - name: /
+    - name: account employee
+      description: Manage account employee
+    - name: account customer
+      description: Manage account customer
+    - name: offices
+      description: Manage offices
+    - name: employees
+      description: Manage employees
+    - name: customers
+      description: Manage customers
+    - name: orders
+      description: Manage orders
+    - name: productlines
+      description: Manage productlines
+    - name: products
+      description: Manage products
+    - name: reports
+      description: Manage reports
+    - name: logs
+      description: Manage logs
+paths:
+    /:
+        get:
+            tags:
+                - /
+            summary: Home Page
+            description: RESTful API application made for training.
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    message:
+                                        type: string
+                                        example: RESTful APIs training.
+
+    /api/users/employees/register:
+        post:
+            tags:
+                - account employee
+            summary: Register for employee
+            requestBody:
+                description: Register a new user linked to an employee to get the sufficient permissions to use the app
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UserRegister"
+            responses:
+                201:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: boolean
+                                    message:
+                                        type: string
+                                        example: Registration successfully
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Failed to register.
+
+    /api/users/employees/login:
+        post:
+            tags:
+                - account employee
+            summary: Login user
+            security:
+                - bearerAuth: []
+            requestBody:
+                description: User login to use app
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UserLogin"
+            responses:
+                200:
+                    description: Login successfull
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Login successfully
+                                    data:
+                                        type: object
+                                        properties:
+                                            success:
+                                                type: boolean
+                                                example: true
+                                            token:
+                                                type: string
+                                                example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbXBsb3llZU51bWJlciI6MTAwMiwib2ZmaWNlQ29kZSI6IjEiLCJqb2JUaXRsZSI6IlByZXNpZGVudCIsImlhdCI6MTYzNTk2NjQ5MCwiZXhwIjoxNjM1OTcwMDkwfQ.0laYWT2XaNYJz2q6ISvcjQNO8risVnF4VCbhr5hWqiQ
+                404:
+                    description: Login failed
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: string
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: Invalid username or password.
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Failed to Login.
+    /api/users/customers/register:
+        post:
+            tags:
+                - account customer
+            summary: Register for customer
+            requestBody:
+                description: Register a new user linked to an customer to get the sufficient permissions to use the app
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UserCustomerRegister"
+            responses:
+                201:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: boolean
+                                    message:
+                                        type: string
+                                        example: Register successfully
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Failed to register.
+
+    /api/users/customers/login:
+        post:
+            tags:
+                - account customer
+            summary: Login for customer
+            security:
+                - bearerAuth: []
+            requestBody:
+                description: User login to use app
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UserCustomerLogin"
+            responses:
+                200:
+                    description: Login successfull
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Login successfully
+                                    data:
+                                        type: object
+                                        properties:
+                                            success:
+                                                type: boolean
+                                                example: true
+                                            token:
+                                                type: string
+                                                example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbXBsb3llZU51bWJlciI6MTAwMiwib2ZmaWNlQ29kZSI6IjEiLCJqb2JUaXRsZSI6IlByZXNpZGVudCIsImlhdCI6MTYzNTk2NjQ5MCwiZXhwIjoxNjM1OTcwMDkwfQ.0laYWT2XaNYJz2q6ISvcjQNO8risVnF4VCbhr5hWqiQ
+                404:
+                    description: Login failed
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: string
+                                        example: false
+                                    message:
+                                        type: string
+                                        example: Invalid username or password.
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Failed to Login.
+
+    /api/employees:
+        get:
+            tags:
+                - employees
+            summary: Get all employees
+            parameters:
+                - in: "query"
+                  name: created_by
+                  schema:
+                      type: integer
+                  description: Confirm the creator of this employee
+                - in: "query"
+                  name: current_page
+                  schema:
+                      type: integer
+                  description: current page
+                  default: 0
+                - in: "query"
+                  name: page_size
+                  schema:
+                      type: integer
+                  description: Total records of a page
+                  default: 10
+                - in: "query"
+                  name: sort_type
+                  schema:
+                      type: string
+                      enum:
+                          - "asc"
+                          - "desc"
+                  description: sort by field
+                  default: "asc"
+                - in: "query"
+                  name: sort_by
+                  schema:
+                      type: string
+                  description: sort by field
+                  default: "employeeNumber"
+                - in: "query"
+                  name: officeCode
+                  schema:
+                      type: string
+                  description: sort by field
+                - in: "query"
+                  name: reportsTo
+                  schema:
+                      type: integer
+                  description: sort by field
+                - in: "query"
+                  name: email
+                  schema:
+                      type: string
+                  description: sort by field
+            security:
+                - bearerAuth: []
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AllEmployeeRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        post:
+            tags:
+                - employees
+            summary: Create new employee
+            security:
+                - bearerAuth: []
+            requestBody:
+                description: Info to create a employee
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateEmployee"
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CreateEmployeeRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+
+    /api/employees/{employeeNumber}:
+        get:
+            tags:
+                - employees
+            summary: Get information of a employee by employeeNumber
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: employeeNumber
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/EmployeeByIdRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        put:
+            tags:
+                - employees
+            summary: Update employee
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: employeeNumber
+            requestBody:
+                description: Info to update a employee
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateEmployee"
+
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Update successfully
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        delete:
+            tags:
+                - employees
+            summary: Delete a employee
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: employeeNumber
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: string
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Delete successfully
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+    /api/employees/advance:
+        post:
+            tags:
+                - employees
+            summary: Create new employee with an array customer
+            security:
+                - bearerAuth: []
+            requestBody:
+                description: Info to create a employee
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateEmployeeAdvance"
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CreateEmployeeAdvanceRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+    /api/employees/advance/{employeeNumber}:
+        delete:
+            tags:
+                - employees
+            summary: Delete a employee and tranfer all customer of this employee to default employee belong to this employee's office
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: employeeNumber
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/DeleteEmployeeAdvanceRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+
+    /api/customers:
+        get:
+            tags:
+                - customers
+            summary: Get all customers
+            parameters:
+                - in: "query"
+                  name: created_by
+                  schema:
+                      type: integer
+                  description: Confirm the creator of this customer
+                - in: "query"
+                  name: current_page
+                  schema:
+                      type: integer
+                  description: current page
+                  default: 0
+                - in: "query"
+                  name: page_size
+                  schema:
+                      type: integer
+                  description: Total records of a page
+                  default: 10
+                - in: "query"
+                  name: sort_type
+                  schema:
+                      type: string
+                      enum:
+                          - "asc"
+                          - "desc"
+                  description: sort by field
+                  default: "asc"
+                - in: "query"
+                  name: sort_by
+                  schema:
+                      type: string
+                  description: sort by field
+                  default: "customerNumber"
+                - in: "query"
+                  name: phone
+                  schema:
+                      type: string
+                - in: "query"
+                  name: state
+                  schema:
+                      type: string
+                - in: "query"
+                  name: postalCode
+                  schema:
+                      type: string
+                - in: "query"
+                  name: customerName
+                  schema:
+                      type: string
+                - in: "query"
+                  name: contactLastName
+                  schema:
+                      type: string
+                - in: "query"
+                  name: contactFirstName
+                  schema:
+                      type: string
+                - in: "query"
+                  name: addressLine1
+                  schema:
+                      type: string
+                - in: "query"
+                  name: addressLine2
+                  schema:
+                      type: string
+                - in: "query"
+                  name: city
+                  schema:
+                      type: string
+                - in: "query"
+                  name: salesRepEmployeeNumber
+                  schema:
+                      type: number
+            security:
+                - bearerAuth: []
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AllCustomerRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        post:
+            tags:
+                - customers
+            summary: Create new customer
+            security:
+                - bearerAuth: []
+            requestBody:
+                description: Info to create a customer
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateCustomer"
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CreateCustomerRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+
+    /api/customers/payment:
+        get:
+            tags:
+                - customers
+            summary: Get the customer's own payment
+            security:
+                - bearerAuth: []
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Customerpayment"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+
+    /api/customers/profile:
+        put:
+            tags:
+                - customers
+            summary: Update information of a customer by customer
+            security:
+                - bearerAuth: []
+            requestBody:
+                description: Update information a customer
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateCustomer"
+
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Update information successfully
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+
+    /api/customers/myinfo:
+        get:
+            tags:
+                - customers
+            summary: Get the customer's own information
+            security:
+                - bearerAuth: []
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CustomerSelfRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+
+    /api/customers/{customerNumber}:
+        get:
+            tags:
+                - customers
+            summary: Get information of a customer by customerNumber
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: customerNumber
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CustomerByIdRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        put:
+            tags:
+                - customers
+            summary: Update information of a customer
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: customerNumber
+            requestBody:
+                description: Update information a customer
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateCustomer"
+
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Update information successfully
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        delete:
+            tags:
+                - customers
+            summary: Delete a customer
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: customerNumber
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: string
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Delete successfully
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+    /api/offices:
+        get:
+            tags:
+                - offices
+            summary: Get all offices
+            parameters:
+                - in: "query"
+                  name: created_by
+                  schema:
+                      type: integer
+                  description: Confirm the creator of this office
+                - in: "query"
+                  name: current_page
+                  schema:
+                      type: integer
+                  description: current page
+                  default: 0
+                - in: "query"
+                  name: page_size
+                  schema:
+                      type: integer
+                  description: Total records of a page
+                  default: 10
+                - in: "query"
+                  name: sort_type
+                  schema:
+                      type: string
+                      enum:
+                          - "asc"
+                          - "desc"
+                  description: sort by field
+                  default: "asc"
+                - in: "query"
+                  name: sort_by
+                  schema:
+                      type: string
+                  description: sort by field
+                  default: "officeCode"
+                - in: "query"
+                  name: city
+                  schema:
+                      type: string
+                - in: "query"
+                  name: state
+                  schema:
+                      type: string
+                - in: "query"
+                  name: country
+                  schema:
+                      type: string
+                - in: "query"
+                  name: territory
+                  schema:
+                      type: string
+            security:
+                - bearerAuth: []
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AllOfficeRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        post:
+            tags:
+                - offices
+            summary: Create new office
+            security:
+                - bearerAuth: []
+            requestBody:
+                description: Info to create a office
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateOffice"
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CreateOfficeRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+    /api/offices/{officeCode}:
+        get:
+            tags:
+                - offices
+            summary: Get information of a office by officeCode
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: officeCode
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/OfficeByIdRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        put:
+            tags:
+                - offices
+            summary: Update information of a office
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: customerNumber
+            requestBody:
+                description: Update information a office
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateOffice"
+
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Update information successfully
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        delete:
+            tags:
+                - offices
+            summary: Delete a office
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: officeCode
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: string
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Delete successfully
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+
+    /api/reports:
+        get:
+            tags:
+                - reports
+            summary: Get revenue group by offices in range of time
+            parameters:
+                - in: "query"
+                  name: start_date
+                  schema:
+                      type: string
+                      format: date
+                  description: start date to get report
+                - in: "query"
+                  name: end_date
+                  schema:
+                      type: string
+                      format: date
+                  description: end date to get report
+            security:
+                - bearerAuth: []
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/reportRevenueOfOffice"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+    /api/report/customers:
+        get:
+            tags:
+                - reports
+            summary: get Revenue Of Customers in a range of time
+            parameters:
+                - in: "query"
+                  name: start_date
+                  schema:
+                      type: string
+                      format: date
+                  description: start date to get report
+                - in: "query"
+                  name: end_date
+                  schema:
+                      type: string
+                      format: date
+                  description: end date to get report
+            security:
+                - bearerAuth: []
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/reportRevenueOfCustomers"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+
+    /api/report/productline/{officeCode}:
+        get:
+            tags:
+                - reports
+            summary: get Revenue by productLine in range of time by officeCode
+            parameters:
+                - in: "query"
+                  name: start_date
+                  schema:
+                      type: string
+                      format: date
+                  description: start date to get report
+                - in: "query"
+                  name: end_date
+                  schema:
+                      type: string
+                      format: date
+                  description: end date to get report
+            security:
+                - bearerAuth: []
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/reportRevenueOfProductline"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+    /api/product-lines:
+        get:
+            tags:
+                - productlines
+            summary: Get all productlines
+            parameters:
+                - in: "query"
+                  name: created_by
+                  schema:
+                      type: integer
+                  description: Confirm the creator of this office
+                - in: "query"
+                  name: current_page
+                  schema:
+                      type: integer
+                  description: current page
+                  default: 0
+                - in: "query"
+                  name: page_size
+                  schema:
+                      type: integer
+                  description: Total records of a page
+                  default: 10
+                - in: "query"
+                  name: sort_type
+                  schema:
+                      type: string
+                      enum:
+                          - "asc"
+                          - "desc"
+                  description: sort type
+                  default: "asc"
+                - in: "query"
+                  name: sort_by
+                  schema:
+                      type: string
+                  description: sort by field
+                  default: "officeCode"
+                - in: "query"
+                  name: productLine
+                  schema:
+                      type: string
+            security:
+                - bearerAuth: []
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AllProductLineRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        post:
+            tags:
+                - productlines
+            summary: Create new productline
+            security:
+                - bearerAuth: []
+            requestBody:
+                description: Info to create a productline
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateProductline"
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CreateProductlineRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+    /api/product-lines/{productLine}:
+        get:
+            tags:
+                - productlines
+            summary: Get a productLine
+            parameters:
+                - in: path
+                  required: true
+                  name: productLine
+            security:
+                - bearerAuth: []
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ProductLinebyIdRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        put:
+            tags:
+                - productlines
+            summary: update productline
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: productLine
+            requestBody:
+                description: Info to update a productline
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateProductline"
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CreateProductlineRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        delete:
+            tags:
+                - productlines
+            summary: Delete a productLine
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: productCode
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: string
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Delete successfully
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+
+    /api/orders:
+        get:
+            tags:
+                - orders
+            summary: Get all orders
+            parameters:
+                - in: "query"
+                  name: start_date
+                  schema:
+                      type: string
+                      format: date
+                  description: start date to get order
+                - in: "query"
+                  name: end_date
+                  schema:
+                      type: string
+                      format: date
+                  description: end date to get order
+                - in: "query"
+                  name: current_page
+                  schema:
+                      type: integer
+                  description: current page
+                  default: 0
+                - in: "query"
+                  name: page_size
+                  schema:
+                      type: integer
+                  description: Total records of a page
+                  default: 10
+                - in: "query"
+                  name: sort_type
+                  schema:
+                      type: string
+                      enum:
+                          - "asc"
+                          - "desc"
+                  description: sort by field
+                  default: "asc"
+                - in: "query"
+                  name: sort_by
+                  schema:
+                      type: string
+                  description: sort by field
+                  default: "customerNumber"
+                - in: "query"
+                  name: status
+                  enum:
+                      - "In Process"
+                      - "On Hold"
+                      - "Disputed"
+                      - "Resolved"
+                      - "Cancelled"
+                      - "Shipped"
+                      - "COD"
+                  schema:
+                      type: string
+                  description: status of order
+                - in: "query"
+                  name: customerNumber
+                  schema:
+                      type: number
+                  description: order with customerNumber
+            security:
+                - bearerAuth: []
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AllOrderRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        post:
+            tags:
+                - orders
+            summary: Create new order
+            security:
+                - bearerAuth: []
+            requestBody:
+                description: Info to create a order
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateOrder"
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CreateOfficeRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+
+    /api/orders/{orderNumber}:
+        get:
+            tags:
+                - orders
+            summary: Get order by orderNumber
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: orderNumber
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/OrderByIdRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        patch:
+            tags:
+                - orders
+            summary: Update status order
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: orderNumber
+            requestBody:
+                description: Update information a orders
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/OrderPatch"
+
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: boolean
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Update information successfully
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        delete:
+            tags:
+                - orders
+            summary: Delete a order (soft delete)
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: orderNumber
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: string
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Delete order successfully
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+
+    /api/orders/myorder:
+        get:
+            tags:
+                - orders
+            summary: Get order by customer themselves (require customer login)
+            security:
+                - bearerAuth: []
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/OrderForCusRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+    /api/products:
+        get:
+            tags:
+                - products
+            summary: Get all products
+            parameters:
+                - in: "query"
+                  name: created_by
+                  schema:
+                      type: integer
+                  description: Confirm the creator of this customer
+                - in: "query"
+                  name: current_page
+                  schema:
+                      type: integer
+                  description: current page
+                  default: 0
+                - in: "query"
+                  name: page_size
+                  schema:
+                      type: integer
+                  description: Total records of a page
+                  default: 10
+                - in: "query"
+                  name: sort_type
+                  schema:
+                      type: string
+                      enum:
+                          - "asc"
+                          - "desc"
+                  description: sort by field
+                  default: "asc"
+                - in: "query"
+                  name: sort_by
+                  schema:
+                      type: string
+                  description: sort by field
+                  default: "productCode"
+                - in: "query"
+                  name: buyPrice
+                  schema:
+                      type: string
+                  description: sort by field
+            security:
+                - bearerAuth: []
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AllProductRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        post:
+            tags:
+                - products
+            summary: Create new products
+            security:
+                - bearerAuth: []
+            requestBody:
+                description: Info to create a products
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateProduct"
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CreateProductRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+    /api/products/{productCode}:
+        get:
+            tags:
+                - products
+            summary: Get a product
+            parameters:
+                - in: path
+                  required: true
+                  name: productCode
+            security:
+                - bearerAuth: []
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/ProductbyIdRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        put:
+            tags:
+                - products
+            summary: update products
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: productCode
+            requestBody:
+                description: Info to update a products
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateProduct"
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/CreateProductRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+        delete:
+            tags:
+                - products
+            summary: Delete a product
+            security:
+                - bearerAuth: []
+            parameters:
+                - in: path
+                  required: true
+                  name: productCode
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        type: string
+                                        example: true
+                                    message:
+                                        type: string
+                                        example: Delete successfully
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+    /api/logs:
+        get:
+            tags:
+                - logs
+            summary: Get all logs in a period of time
+            parameters:
+                - in: "query"
+                  name: start_date
+                  schema:
+                      type: string
+                      format: date
+                  description: start date to get logger
+                - in: "query"
+                  name: end_date
+                  schema:
+                      type: string
+                      format: date
+                  description: end date to get logger
+                - in: "query"
+                  name: jobTitle
+                  schema:
+                      type: string
+                      enum:
+                          - "President"
+                          - "Manager"
+                          - "Leader"
+                          - "Staff"
+                  description: Role of user
+                - in: "query"
+                  name: officeCode
+                  schema:
+                      type: string
+                  description: officeCode can get logger
+            security:
+                - bearerAuth: []
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/AllLogRes"
+                401:
+                    description: Unauthorization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Unauthorization"
+                500:
+                    description: server error
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Internal Server Error
+
+components:
+    schemas:
+        UserRegister:
+            type: object
+            properties:
+                username:
+                    type: string
+                    minLength: 3
+                    maxLength: 20
+                    example: hoamx1
+                password:
+                    type: string
+                    minLength: 6
+                    maxLength: 100
+                    pattern: "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$"
+                    example: hoa12345@President
+                employeeNumber:
+                    type: number
+                    minimum: 1
+                    example: 1002
+            required:
+                - username
+                - password
+                - employeeNumber
+
+        UserCustomerRegister:
+            type: object
+            properties:
+                username:
+                    type: string
+                    minLength: 3
+                    maxLength: 20
+                    example: hoamx1
+                password:
+                    type: string
+                    minLength: 6
+                    maxLength: 100
+                    pattern: "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$"
+                    example: Hoa12345@P@
+                customerNumber:
+                    type: number
+                    minimum: 1
+                    example: 103
+            required:
+                - username
+                - password
+                - employeeNumber
+
+        UserCustomerLogin:
+            type: object
+            properties:
+                username:
+                    type: string
+                    minLength: 3
+                    maxLength: 20
+                    example: hoamx1
+                password:
+                    type: string
+                    minLength: 6
+                    maxLength: 100
+                    pattern: "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$"
+                    example: Hoa12345@P@
+            required:
+                - username
+                - password
+
+        UserLogin:
+            type: object
+            properties:
+                username:
+                    type: string
+                    minLength: 3
+                    maxLength: 20
+                    example: hoamx1
+                password:
+                    type: string
+                    minLength: 6
+                    maxLength: 100
+                    pattern: "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$"
+                    example: hoa12345@President
+            required:
+                - username
+                - password
+        EmployeeByIdRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                message:
+                    type: string
+                    example: Info of employee
+                data:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            employeeNumber:
+                                type: number
+                                example: 1002
+                            lastName:
+                                type: string
+                                minLength: 3
+                                maxLength: 50
+                                example: Peter
+                            firstName:
+                                type: string
+                                minLength: 3
+                                maxLength: 50
+                                example: Edward
+                            extension:
+                                type: string
+                                maxLength: 50
+                                example: x678
+                            email:
+                                type: string
+                                minLength: 10
+                                maxLength: 100
+                                example: edward@gmail.com
+                            officeCode:
+                                type: string
+                                maxLength: 10
+                                example: 1
+                            reportsTo:
+                                type: number
+                                example: 1002
+                            jobTitle:
+                                type: string
+                                example: Manager
+                                enum: [President, Manager, Leader, Staff]
+        CreateEmployee:
+            type: object
+            properties:
+                lastName:
+                    type: string
+                    minLength: 3
+                    maxLength: 50
+                    example: Peter
+                firstName:
+                    type: string
+                    minLength: 3
+                    maxLength: 50
+                    example: Edward
+                extension:
+                    type: string
+                    maxLength: 50
+                    example: x678
+                email:
+                    type: string
+                    minLength: 10
+                    maxLength: 100
+                    example: edward@gmail.com
+                officeCode:
+                    type: string
+                    maxLength: 10
+                    example: 1
+                reportsTo:
+                    type: number
+                    example: 1002
+                jobTitle:
+                    type: string
+                    example: Manager
+                    enum: [President, Manager, Leader, Staff]
+        CreateEmployeeRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                message:
+                    type: string
+                    example: Create successfully
+                employeeNumber:
+                    type: number
+                    example: 1700
+        AllEmployeeRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                message:
+                    type: string
+                    example: All employees
+                data:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            employeeNumber:
+                                type: number
+                                example: 1002
+                            lastName:
+                                type: string
+                                example: Murphy
+                            firstName:
+                                type: string
+                                example: Diane
+                            extension:
+                                type: string
+                                example: x5800
+                            email:
+                                type: string
+                                example: dmurphy@classicmodelcars.com
+                            jobTitle:
+                                type: string
+                                example: President
+
+                            officeCode:
+                                type: string
+                                example: 1
+                            reportsTo:
+                                type: number
+                                example: 1002
+                            created_by:
+                                type: number
+                                example: 1056
+                            updated_by:
+                                type: number
+                                example: 1056
+                            updated_on:
+                                type: string
+                                format: date
+                                example: 2021-12-04T09:52:53.000Z
+                            created_on:
+                                type: string
+                                format: date
+                                example: 2021-12-04T09:52:53.000Z
+        CreateCustomer:
+            type: object
+            properties:
+                customerName:
+                    type: string
+                    example: Atelier graphique
+                    minLength: 5
+                    maxLength: 50
+                contactLastName:
+                    type: string
+                    example: Schmit
+                    minLength: 3
+                    maxLength: 50
+                contactFirstName:
+                    type: string
+                    example: Carine
+                    minLength: 3
+                    maxLength: 50
+                phone:
+                    type: string
+                    example: 40.32.2555
+                    minLength: 8
+                    maxLength: 20
+                addressLine1:
+                    type: string
+                    example: 54, rue Royale
+                    minLength: 10
+                    maxLength: 50
+                addressLine2:
+                    type: string
+                    example: null
+                    minLength: 10
+                    maxLength: 50
+                city:
+                    type: string
+                    example: Nantes
+                    minLength: 2
+                    maxLength: 50
+                state:
+                    type: string
+                    example: null
+                    minLength: 2
+                    maxLength: 50
+                postalCode:
+                    type: string
+                    example: 44000
+                    minLength: 5
+                    maxLength: 15
+                country:
+                    type: string
+                    example: France
+                    minLength: 2
+                    maxLength: 50
+                creditLimit:
+                    type: number
+                    example: 21000.55
+                    maxLength: 99999999
+        AllCustomerRes:
+            type: object
+            properties:
+                customerNumber:
+                    type: number
+                    example: 103
+                customerName:
+                    type: string
+                    example: Atelier graphique
+                    minLength: 5
+                    maxLength: 50
+                contactLastName:
+                    type: string
+                    example: Schmit
+                    minLength: 3
+                    maxLength: 50
+                contactFirstName:
+                    type: string
+                    example: Carine
+                    minLength: 3
+                    maxLength: 50
+                phone:
+                    type: string
+                    example: 40.32.2555
+                    minLength: 8
+                    maxLength: 20
+                addressLine1:
+                    type: string
+                    example: 54, rue Royale
+                    minLength: 10
+                    maxLength: 50
+                addressLine2:
+                    type: string
+                    example: null
+                    minLength: 10
+                    maxLength: 50
+                city:
+                    type: string
+                    example: Nantes
+                    minLength: 2
+                    maxLength: 50
+                state:
+                    type: string
+                    example: null
+                    minLength: 2
+                    maxLength: 50
+                postalCode:
+                    type: string
+                    example: 44000
+                    minLength: 5
+                    maxLength: 15
+                country:
+                    type: string
+                    example: France
+                    minLength: 2
+                    maxLength: 50
+                creditLimit:
+                    type: number
+                    example: 21000.55
+                    maxLength: 99999999
+                created_by:
+                    type: number
+                    example: 1056
+                updated_by:
+                    type: number
+                    example: 1056
+                updated_on:
+                    type: string
+                    format: date
+                    example: 2021-12-04T09:52:53.000Z
+                created_on:
+                    type: string
+                    format: date
+                    example: 2021-12-04T09:52:53.000Z
+        CreateCustomerRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                message:
+                    type: string
+                    example: Create a new customer successfully
+                customerNumber:
+                    type: number
+                    example: 199
+        CustomerByIdRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                message:
+                    type: string
+                    example: Information a customer by customerNumber
+                data:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            customerNumber:
+                                type: number
+                                example: 103
+                            customerName:
+                                type: string
+                                example: Atelier graphique
+                                minLength: 5
+                                maxLength: 50
+                            contactLastName:
+                                type: string
+                                example: Schmit
+                                minLength: 3
+                                maxLength: 50
+                            contactFirstName:
+                                type: string
+                                example: Carine
+                                minLength: 3
+                                maxLength: 50
+                            phone:
+                                type: string
+                                example: 40.32.2555
+                                minLength: 8
+                                maxLength: 20
+                            addressLine1:
+                                type: string
+                                example: 54, rue Royale
+                                minLength: 10
+                                maxLength: 50
+                            addressLine2:
+                                type: string
+                                example: null
+                                minLength: 10
+                                maxLength: 50
+                            city:
+                                type: string
+                                example: Nantes
+                                minLength: 2
+                                maxLength: 50
+                            state:
+                                type: string
+                                example: null
+                                minLength: 2
+                                maxLength: 50
+                            postalCode:
+                                type: string
+                                example: 44000
+                                minLength: 5
+                                maxLength: 15
+                            country:
+                                type: string
+                                example: France
+                                minLength: 2
+                                maxLength: 50
+                            creditLimit:
+                                type: number
+                                example: 21000.55
+                                maxLength: 99999999
+        AllOfficeRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                offices:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            officeCode:
+                                type: string
+                                example: 8
+                            city:
+                                type: string
+                                example: Ha Noi
+                            phone:
+                                type: string
+                                example: Schmit
+                                minLength: 3
+                                maxLength: 50
+                            addressLine1:
+                                type: string
+                                example: 100 Market Street
+                                minLength: 3
+                                maxLength: 50
+                            addressLine2:
+                                type: string
+                                example: 100 Hyuki Street
+                                minLength: 8
+                                maxLength: 20
+                            state:
+                                type: string
+                                example: Kandos
+                                minLength: 10
+                                maxLength: 50
+                            country:
+                                type: string
+                                example: null
+                                minLength: 10
+                                maxLength: 50
+                            postalCode:
+                                type: string
+                                example: Nantes
+                                minLength: 2
+                                maxLength: 50
+                            territory:
+                                type: string
+                                example: null
+                                minLength: 2
+                                maxLength: 50
+                            created_by:
+                                type: number
+                                example: 1056
+                            updated_by:
+                                type: number
+                                example: 1056
+                            updated_on:
+                                type: string
+                                format: date
+                                example: 2021-12-04T09:52:53.000Z
+                            created_on:
+                                type: string
+                                format: date
+                                example: 2021-12-04T09:52:53.000Z
+        CreateOffice:
+            type: object
+            properties:
+                officeCode:
+                    type: string
+                    example: 6
+                    minLength: 5
+                    maxLength: 50
+                phone:
+                    type: string
+                    example: Schmit
+                    minLength: 3
+                    maxLength: 50
+                addressLine1:
+                    type: string
+                    example: Quang Tri
+                    minLength: 3
+                    maxLength: 50
+                addressLine2:
+                    type: string
+                    example: Tri Quang Thanh
+                    minLength: 8
+                    maxLength: 50
+                state:
+                    type: string
+                    example: Nam Tu Liem
+                    minLength: 10
+                    maxLength: 50
+                city:
+                    type: string
+                    example: Ha Noi
+                    minLength: 10
+                    maxLength: 50
+                country:
+                    type: string
+                    example: Nantes
+                    minLength: 2
+                    maxLength: 50
+                postalCode:
+                    type: string
+                    example: AN5678
+                    minLength: 2
+                    maxLength: 50
+                territory:
+                    type: string
+                    example: Lukaku
+                    minLength: 5
+                    maxLength: 15
+        CreateOfficeRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                message:
+                    type: string
+                    example: Create successfully new office
+                officeCode:
+                    type: string
+                    example: 15
+        Unauthorization:
+            type: object
+            properties:
+                err:
+                    type: string
+                    example: Unauthorization
+        OfficeByIdRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                offices:
+                    type: object
+                    properties:
+                        officeCode:
+                            type: string
+                            example: 8
+                        city:
+                            type: string
+                            example: Ha Noi
+                        phone:
+                            type: string
+                            example: Schmit
+                            minLength: 3
+                            maxLength: 50
+                        addressLine1:
+                            type: string
+                            example: 100 Market Street
+                            minLength: 3
+                            maxLength: 50
+                        addressLine2:
+                            type: string
+                            example: 100 Hyuki Street
+                            minLength: 8
+                            maxLength: 20
+                        state:
+                            type: string
+                            example: Kandos
+                            minLength: 10
+                            maxLength: 50
+                        country:
+                            type: string
+                            example: null
+                            minLength: 10
+                            maxLength: 50
+                        postalCode:
+                            type: string
+                            example: Nantes
+                            minLength: 2
+                            maxLength: 50
+                        territory:
+                            type: string
+                            example: null
+                            minLength: 2
+                            maxLength: 50
+                        created_by:
+                            type: number
+                            example: 1056
+                        updated_by:
+                            type: number
+                            example: 1056
+                        updated_on:
+                            type: string
+                            format: date
+                            example: 2021-12-04T09:52:53.000Z
+                        created_on:
+                            type: string
+                            format: date
+                            example: 2021-12-04T09:52:53.000Z
+        AllOrderRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                count:
+                    type: number
+                    example: 4
+                orders:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            orderNumber:
+                                type: number
+                                example: 10164
+                            orderDate:
+                                type: string
+                                format: date
+                                example: 2003-10-20T17:00:00.000Z
+                            requiredDate:
+                                type: string
+                                format: date
+                                example: 2003-10-20T17:00:00.000Z
+                            shippedDate:
+                                type: string
+                                format: date
+                                example: 2003-10-20T17:00:00.000Z
+                            status:
+                                type: string
+                                example: Resolved
+                                minLength: 8
+                                maxLength: 20
+                            comments:
+                                type: string
+                                example: This order was disputed, but resolved on 11/1/2003; Customer doesn't like the colors and precision of the models.
+                            customerNumber:
+                                type: number
+                                example: 103
+                            created_by:
+                                type: number
+                                example: 1056
+                            updated_by:
+                                type: number
+                                example: 1056
+                            updated_on:
+                                type: string
+                                format: date
+                                example: 2021-12-04T09:52:53.000Z
+                            created_on:
+                                type: string
+                                format: date
+                                example: 2021-12-04T09:52:53.000Z
+        CreateOrder:
+            type: object
+            properties:
+                status:
+                    type: string
+                    enum:
+                        - "In Process"
+                        - "COD"
+                    default: In Process
+                orderDate:
+                    type: string
+                    format: date
+                    example: 2003-10-20T17:00:00.000Z
+                requiredDate:
+                    type: string
+                    format: date
+                    example: 2003-10-20T17:00:00.000Z
+                shippedDate:
+                    type: string
+                    format: date
+                    example: 2003-10-20T17:00:00.000Z
+                comments:
+                    type: string
+                    example: This order was disputed, but resolved on 11/1/2003; Customer doesn't like the colors and precision of the models.
+                customerNumber:
+                    type: number
+                    example: 103
+                orderdetails:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            productCode:
+                                type: string
+                                example: S18_1749
+                            quantityOrdered:
+                                type: number
+                                example: 12
+                            priceEach:
+                                type: number
+                                example: 89.9
+                            orderLineNumber:
+                                type: number
+                                example: 5
+        OrderByIdRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                orders:
+                    type: object
+                    properties:
+                        orderNumber:
+                            type: number
+                            example: 10164
+                        orderDate:
+                            type: string
+                            format: date
+                            example: 2003-10-20T17:00:00.000Z
+                        requiredDate:
+                            type: string
+                            format: date
+                            example: 2003-10-20T17:00:00.000Z
+                        shippedDate:
+                            type: string
+                            format: date
+                            example: 2003-10-20T17:00:00.000Z
+                        status:
+                            type: string
+                            example: Resolved
+                            minLength: 8
+                            maxLength: 20
+                        comments:
+                            type: string
+                            example: This order was disputed, but resolved on 11/1/2003; Customer doesn't like the colors and precision of the models.
+                        customerNumber:
+                            type: number
+                            example: 103
+                        created_by:
+                            type: number
+                            example: 1056
+                        updated_by:
+                            type: number
+                            example: 1056
+                        updated_on:
+                            type: string
+                            format: date
+                            example: 2021-12-04T09:52:53.000Z
+                        created_on:
+                            type: string
+                            format: date
+                            example: 2021-12-04T09:52:53.000Z
+        OrderPatch:
+            type: object
+            properties:
+                status:
+                    type: string
+                    enum:
+                        - "In Process"
+                        - "On Hold"
+                        - "Disputed"
+                        - "Resolved"
+                        - "Cancelled"
+                        - "Shipped"
+                        - "COD"
+                    default: In Process
+                comments:
+                    type: string
+                    example: Customer requested that FedEx Ground is used for this shipping
+        reportRevenueOfOffice:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                message:
+                    type: string
+                    example: "Sales revenue by office for a given period of time"
+                data:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            officeCode:
+                                type: string
+                                example: "1"
+                            revenue:
+                                type: number
+                                example: 1005160.36
+        OrderForCusRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                count:
+                    type: number
+                    example: 6
+                myOrder:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            orderNumber:
+                                type: number
+                                example: 10164
+                            orderDate:
+                                type: string
+                                format: date
+                                example: 2003-10-20T17:00:00.000Z
+                            requiredDate:
+                                type: string
+                                format: date
+                                example: 2003-10-20T17:00:00.000Z
+                            shippedDate:
+                                type: string
+                                format: date
+                                example: 2003-10-20T17:00:00.000Z
+                            status:
+                                type: string
+                                example: Resolved
+                                minLength: 8
+                                maxLength: 20
+                            created_by:
+                                type: number
+                                example: 1056
+                            orderdetails:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        productCode:
+                                            type: string
+                                            example: S18_1749
+                                        quantityOrdered:
+                                            type: number
+                                            example: 12
+                                        priceEach:
+                                            type: number
+                                            example: 89.9
+                                        orderLineNumber:
+                                            type: number
+                                            example: 5
+        AllProductRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                offices:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            productCode:
+                                type: string
+                                example: 6
+                                minLength: 5
+                                maxLength: 50
+                            productName:
+                                type: string
+                                example: car
+                                minLength: 3
+                                maxLength: 50
+                            productLine:
+                                type: string
+                                example: vehicle
+                                minLength: 3
+                                maxLength: 50
+                            productScale:
+                                type: string
+                                example: 1:10
+                                minLength: 8
+                                maxLength: 50
+                            productVendor:
+                                type: string
+                                example: "Min Lin Diecast"
+                                minLength: 10
+                                maxLength: 50
+                            citproductDescriptiony:
+                                type: string
+                                example: "This replica features working kickstand, front suspension, gear-shift lever, footbrake lever, drive chain, wheels and steering. All parts are particularly delicate due to their precise scale and require special care and attention."
+                                minLength: 10
+                            quantityInStock:
+                                type: number
+                                example: 7933
+                                minLength: 2
+                                maxLength: 50
+                            buyPrice:
+                                type: number
+                                example: 2365.32
+                                minLength: 2
+                                maxLength: 50
+                            MSRP:
+                                type: number
+                                example: 95.70
+                                minLength: 5
+                                maxLength: 15
+                            created_by:
+                                type: number
+                                example: 1235
+                                minLength: 5
+                                maxLength: 15
+                            updated_by:
+                                type: number
+                                example: 3256
+                                minLength: 5
+                                maxLength: 15
+                            created_on:
+                                type: date
+                                example: "2021-12-04 16:55:09"
+                            updated_on:
+                                type: date
+                                example: "2021-12-04 16:55:09"
+        CreateProduct:
+            type: object
+            properties:
+                productCode:
+                    type: string
+                    example: 6
+                    minLength: 5
+                    maxLength: 50
+                productName:
+                    type: string
+                    example: car
+                    minLength: 3
+                    maxLength: 50
+                productLine:
+                    type: string
+                    example: vehicle
+                    minLength: 3
+                    maxLength: 50
+                productScale:
+                    type: string
+                    example: 1:10
+                    minLength: 8
+                    maxLength: 50
+                productVendor:
+                    type: string
+                    example: "Min Lin Diecast"
+                    minLength: 10
+                    maxLength: 50
+                citproductDescriptiony:
+                    type: string
+                    example: "This replica features working kickstand, front suspension, gear-shift lever, footbrake lever, drive chain, wheels and steering. All parts are particularly delicate due to their precise scale and require special care and attention."
+                    minLength: 10
+                quantityInStock:
+                    type: number
+                    example: 7933
+                    minLength: 2
+                    maxLength: 50
+                buyPrice:
+                    type: number
+                    example: 2365.32
+                    minLength: 2
+                    maxLength: 50
+                MSRP:
+                    type: number
+                    example: 95.70
+                    minLength: 5
+                    maxLength: 15
+                created_by:
+                    type: number
+                    example: 1235
+                    minLength: 5
+                    maxLength: 15
+                updated_by:
+                    type: number
+                    example: 3256
+                    minLength: 5
+                    maxLength: 15
+                created_on:
+                    type: date
+                    example: "2021-2-12"
+                updated_on:
+                    type: date
+                    example: "2021-3-12"
+        CreateProductRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                message:
+                    type: string
+                    example: Create successfully new office
+                productCode:
+                    type: number
+                    example: 15
+        ProductbyIdRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                offices:
+                    type: object
+                    properties:
+                        productCode:
+                            type: string
+                            example: 6
+                            minLength: 5
+                            maxLength: 50
+                        productName:
+                            type: string
+                            example: car
+                            minLength: 3
+                            maxLength: 50
+                        productLine:
+                            type: string
+                            example: vehicle
+                            minLength: 3
+                            maxLength: 50
+                        productScale:
+                            type: string
+                            example: 1:10
+                            minLength: 8
+                            maxLength: 50
+                        productVendor:
+                            type: string
+                            example: "Min Lin Diecast"
+                            minLength: 10
+                            maxLength: 50
+                        citproductDescriptiony:
+                            type: string
+                            example: "This replica features working kickstand, front suspension, gear-shift lever, footbrake lever, drive chain, wheels and steering. All parts are particularly delicate due to their precise scale and require special care and attention."
+                            minLength: 10
+                        quantityInStock:
+                            type: number
+                            example: 7933
+                            minLength: 2
+                            maxLength: 50
+                        buyPrice:
+                            type: number
+                            example: 2365.32
+                            minLength: 2
+                            maxLength: 50
+                        MSRP:
+                            type: number
+                            example: 95.70
+                            minLength: 5
+                            maxLength: 15
+                        created_by:
+                            type: number
+                            example: 1235
+                            minLength: 5
+                            maxLength: 15
+                        updated_by:
+                            type: number
+                            example: 3256
+                            minLength: 5
+                            maxLength: 15
+                        created_on:
+                            type: date
+                            example: "2021-12-04 16:55:09"
+                        updated_on:
+                            type: date
+                            example: "2021-12-04 16:55:09"
+        AllLogRes:
+            type: object
+            properties:
+                loggers:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            createdBy:
+                                type: object
+                                properties:
+                                    employeeNumber:
+                                        type: number
+                                        example: 1002
+                                    officeCode:
+                                        type: string
+                                        example: 1
+                                    jobTile:
+                                        type: string
+                                        enum:
+                                            - "President"
+                                            - "Manager"
+                                            - "Leader"
+                                            - "Staff"
+                                        example: President
+                            _id:
+                                type: string
+                                example: 61ae3847d0c1142db32d49f3
+                            title:
+                                type: string
+                                example: customerNumber is invalid
+                            time:
+                                type: string
+                                format: date-time
+                                example: 2021-12-06T23:20:23
+                            action:
+                                type: string
+                                example: "[PUT]: http://localhost:3000/api/customers/39884"
+                            status:
+                                type: string
+                                example: Failed
+                            message:
+                                type: string
+                                example: "Error: customerNumber is invalid\n    at Object.checkValidCustomerNumber (/home/hoamx1/Desktop/nodejs-knex-objection-full/utils/common.js:174:15)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)\n    at async updateInfoCustomer (/home/hoamx1/Desktop/nodejs-knex-objection-full/services/customers.service.js:51:5)\n    at async /home/hoamx1/Desktop/nodejs-knex-objection-full/controllers/customer.controller.js:61:5"
+        reportRevenueOfCustomers:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                message:
+                    type: string
+                    example: "Sales revenue by customers for a given period of time"
+                data:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            officeCode:
+                                type: string
+                                example: "1"
+                            revenue:
+                                type: number
+                                example: 1005160.36
+                            customers:
+                                type: number
+                                example: 6
+        reportRevenueOfProductline:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                message:
+                    type: string
+                    example: "Sales revenue by customers for a given period of time"
+                data:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            officeCode:
+                                type: string
+                                example: "1"
+                            revenue:
+                                type: array
+                                properties:
+                                    revenue:
+                                        type: number
+                                        example: 470099.76,
+                                    productLine:
+                                        type: string
+                                        example: "Classic Cars"
+        AllProductLineRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                productLines:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            productLine:
+                                type: string
+                                example: "Classic Cars"
+                            textDescription:
+                                type: string
+                                example: "Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office."
+                            htmlDescription:
+                                type: string
+                            image:
+                                type: string
+                            updated_by:
+                                type: number
+                            created_by:
+                                type: number
+                            created_on:
+                                type: date
+                                example: 2021-12-04T09:54:14.000Z
+                            updated_on:
+                                type: date
+        CreateProductline:
+            type: object
+            properties:
+                productLine:
+                    type: string
+                    example: "Classic Cars"
+                textDescription:
+                    type: string
+                    example: "Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office."
+                htmlDescription:
+                    type: string
+                image:
+                    type: string
+                updated_by:
+                    type: number
+                created_by:
+                    type: number
+                created_on:
+                    type: string
+                    format: date-time
+                    example: 2021-12-04T09:54:14.000Z
+                updated_on:
+                    type: string
+                    format: date
+        ProductLinebyIdRes:
+            type: object
+            properties:
+                productLine:
+                    type: string
+                    example: "Classic Cars"
+                textDescription:
+                    type: string
+                    example: "Attention car enthusiasts: fully assembled and ready for display in the home or office."
+                htmlDescription:
+                    type: string
+                image:
+                    type: string
+                updated_by:
+                    type: number
+                created_by:
+                    type: number
+                created_on:
+                    type: string
+                    format: date-time
+                    example: 2021-12-04T09:54:14.000Z
+                updated_on:
+                    type: string
+        CreateProductlineRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                message:
+                    type: string
+                    example: Create successfully new office
+                productCode:
+                    type: string
+                    example: "Classic Cars"
+        CreateEmployeeAdvance:
+            type: object
+            properties:
+                firstName:
+                    type: string
+                    example: Luies
+                lastName:
+                    type: string
+                    example: Penta
+                extension:
+                    type: string
+                    example: x456
+                email:
+                    type: string
+                    example: hoa@gmail.com
+                officeCode:
+                    type: string
+                    example: "x6"
+                jobTitle:
+                    type: string
+                    enum:
+                        - "Staff"
+                        - "Leader"
+                        - "Manager"
+                        - "President"
+                    default: President
+                reportsTo:
+                    type: number
+                    example: 1234
+                customers:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            customerName:
+                                type: string
+                                example: Atelier graphique
+                                minLength: 5
+                                maxLength: 50
+                            contactLastName:
+                                type: string
+                                example: Schmit
+                                minLength: 3
+                                maxLength: 50
+                            contactFirstName:
+                                type: string
+                                example: Carine
+                                minLength: 3
+                                maxLength: 50
+                            phone:
+                                type: string
+                                example: 40.32.2555
+                                minLength: 8
+                                maxLength: 20
+                            addressLine1:
+                                type: string
+                                example: 54, rue Royale
+                                minLength: 10
+                                maxLength: 50
+                            addressLine2:
+                                type: string
+                                example: null
+                                minLength: 10
+                                maxLength: 50
+                            city:
+                                type: string
+                                example: Nantes
+                                minLength: 2
+                                maxLength: 50
+                            state:
+                                type: string
+                                example: null
+                                minLength: 2
+                                maxLength: 50
+                            postalCode:
+                                type: string
+                                example: 44000
+                                minLength: 5
+                                maxLength: 15
+                            country:
+                                type: string
+                                example: France
+                                minLength: 2
+                                maxLength: 50
+                            creditLimit:
+                                type: number
+                                example: 21000.55
+                                maxLength: 99999999
+                            salesRepEmployeeNumber:
+                                type: number
+                                example: 1621
+        CreateEmployeeAdvanceRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                message:
+                    type: string
+                    example: Create employee successfully
+        DeleteEmployeeAdvanceRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                message:
+                    type: string
+                    example: Delete and tranfer customers successfully
+        CustomerSelfRes:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                    example: true
+                message:
+                    type: string
+                    example: Information of you
+                data:
+                    type: object
+                    properties:
+                        customerNumber:
+                            type: number
+                            example: 103
+                        customerName:
+                            type: string
+                            example: Atelier graphique
+                            minLength: 5
+                            maxLength: 50
+                        contactLastName:
+                            type: string
+                            example: Schmit
+                            minLength: 3
+                            maxLength: 50
+                        contactFirstName:
+                            type: string
+                            example: Carine
+                            minLength: 3
+                            maxLength: 50
+                        phone:
+                            type: string
+                            example: 40.32.2555
+                            minLength: 8
+                            maxLength: 20
+                        addressLine1:
+                            type: string
+                            example: 54, rue Royale
+                            minLength: 10
+                            maxLength: 50
+                        addressLine2:
+                            type: string
+                            example: null
+                            minLength: 10
+                            maxLength: 50
+                        city:
+                            type: string
+                            example: Nantes
+                            minLength: 2
+                            maxLength: 50
+                        state:
+                            type: string
+                            example: null
+                            minLength: 2
+                            maxLength: 50
+                        postalCode:
+                            type: string
+                            example: 44000
+                            minLength: 5
+                            maxLength: 15
+                        country:
+                            type: string
+                            example: France
+                            minLength: 2
+                            maxLength: 50
+                        creditLimit:
+                            type: number
+                            example: 21000.55
+                            maxLength: 99999999
+                        salesRepEmployeeNumber:
+                            type: number
+                            example: 1621
+                        created_by:
+                            type: number
+                            example: 1002
+                        updated_by:
+                            type: number
+                            example: 1002
+                        created_on:
+                            type: string
+                            format: date-time
+                            example: 2021-12-04T09:51:26.000Z
+                        updated_on:
+                            type: string
+                            format: date-time
+                            example: 2021-12-04T09:51:26.000Z
+    Customerpayment:
+        type: object
+        properties:
+            checkNumber":
+                type: string
+                example: "45DF919B"
+
+            paymentDate:
+                type: string
+                example: "2021-12-07T17:00:00.000Z"
+            amount:
+                type: "number"
+                example: 156000,
+            created_on:
+                type: string
+                example: "2021-12-07T17:42:49.000Z"
+
+    securitySchemes:
+        bearerAuth:
+            type: http
+            scheme: bearer
+            bearerFormat: JWT
